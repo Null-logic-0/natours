@@ -20,7 +20,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 // 1) Global Middlewares
-app.use(express.static(path.join(__dirname, "public")));
+
 // Security HTTP headers
 
 app.use(
@@ -47,9 +47,7 @@ app.use(
           "https://api.stripe.com",
         ],
         "font-src": [
-          // Changed from fontSrc to font-src
           "'self'",
-          "'unsafe-inline'",
           "data:",
           "https://js.stripe.com",
           "https://fonts.googleapis.com",
@@ -69,6 +67,7 @@ app.use(
     },
   }),
 );
+app.use(express.static(path.join(__dirname, "public")));
 
 // Development Logging
 if (process.env.NODE_ENV === "development") {
