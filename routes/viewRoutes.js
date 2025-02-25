@@ -9,14 +9,14 @@ const {
   updateUserData,
   getEmailConfirmForm,
 } = require("../controllers/viewsController");
-const { createBookingCheckout } = require("../controllers/bookingController");
+// const { createBookingCheckout } = require("../controllers/bookingController");
 const { protect, isLoggedIn } = require("../controllers/authController");
 
 const router = express.Router();
 
 router.use(isLoggedIn);
 
-router.get("/", createBookingCheckout, getOverview);
+router.get("/", getOverview);
 router.get("/tour/:slug", protect, getTour);
 router.get("/login", getLoginForm);
 router.get("/signup", getSignupForm);
