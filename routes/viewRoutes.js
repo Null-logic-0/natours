@@ -8,12 +8,13 @@ const {
   getMyTours,
   updateUserData,
   getEmailConfirmForm,
+  alerts,
 } = require("../controllers/viewsController");
 // const { createBookingCheckout } = require("../controllers/bookingController");
 const { protect, isLoggedIn } = require("../controllers/authController");
 
 const router = express.Router();
-
+router.use(alerts);
 router.use(isLoggedIn);
 
 router.get("/", getOverview);
